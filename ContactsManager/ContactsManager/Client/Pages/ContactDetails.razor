@@ -17,6 +17,7 @@ else if (errorMessage != null)
 }
 else
 {
+    <!-- Display contact details -->
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
@@ -49,6 +50,7 @@ else
     private Contact contact;
     private string errorMessage;
 
+    // Load contact details on initialization
     protected override async Task OnInitializedAsync()
     {
         try

@@ -5,12 +5,14 @@
 
 <h3>Contacts</h3>
 
+<!-- Display message if no contacts are available -->
 @if (contacts == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>Loading contacts...</em></p>
 }
 else
 {
+    <!-- Table to list contacts -->
     <table class="table">
         <thead>
             <tr>
@@ -42,6 +44,7 @@ else
 @code {
     private IEnumerable<Contact> contacts;
 
+    // Load contacts on initialization
     protected override async Task OnInitializedAsync()
     {
         contacts = await ContactService.GetContacts();

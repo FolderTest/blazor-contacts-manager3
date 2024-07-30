@@ -9,19 +9,21 @@ namespace ContactManager.Server.Controllers
     [ApiController]
     public class ContactsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context; // Database context for accessing data
 
         public ContactsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        // Retrieve a list of all contacts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Contact>>> GetContacts()
         {
             return await _context.Contacts.ToListAsync();
         }
 
+        // Retrieve a contact by ID
         [HttpGet("{id}")]
         public async Task<ActionResult<Contact>> GetContact(int id)
         {
@@ -35,6 +37,7 @@ namespace ContactManager.Server.Controllers
             return contact;
         }
 
+        // Add a new contact to the database
         [HttpPost]
         public async Task<ActionResult<Contact>> CreateContact(Contact contact)
         {
@@ -44,6 +47,7 @@ namespace ContactManager.Server.Controllers
             return CreatedAtAction(nameof(GetContact), new { id = contact.Id }, contact);
         }
 
+        // Update an existing contact
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateContact(int id, Contact contact)
         {
@@ -73,6 +77,7 @@ namespace ContactManager.Server.Controllers
             return NoContent();
         }
 
+        // Delete a contact by ID
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteContact(int id)
         {

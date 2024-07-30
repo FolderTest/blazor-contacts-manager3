@@ -11,6 +11,7 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
+    <!-- Input fields for editing contact details -->
     <div class="form-group">
         <label for="firstName">First Name</label>
         <InputText id="firstName" class="form-control" @bind-Value="contact.FirstName" />
@@ -55,11 +56,13 @@
     [Parameter] public int Id { get; set; }
     private Contact contact;
 
+    // Load contact details on initialization
     protected override async Task OnInitializedAsync()
     {
         contact = await ContactService.GetContact(Id);
     }
 
+    // Handle form submission to update contact
     private async Task HandleValidSubmit()
     {
         await ContactService.UpdateContact(contact);

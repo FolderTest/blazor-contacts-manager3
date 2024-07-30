@@ -9,6 +9,7 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
+    <!-- Input fields for creating a new contact -->
     <div class="form-group">
         <label>First Name</label>
         <InputText class="form-control" @bind-Value="contact.FirstName" />
@@ -51,6 +52,7 @@
 @code {
     private Contact contact = new Contact();
 
+    // Handle form submission to create a new contact
     private async Task HandleValidSubmit()
     {
         await ContactService.CreateContact(contact);

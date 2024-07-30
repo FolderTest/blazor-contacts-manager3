@@ -41,6 +41,7 @@ else
     private Contact contact;
     private string errorMessage;
 
+    // Load contact details on initialization
     protected override async Task OnInitializedAsync()
     {
         try
@@ -57,6 +58,7 @@ else
         }
     }
 
+    // Handle the deletion process
     private async Task ConfirmDelete()
     {
         try

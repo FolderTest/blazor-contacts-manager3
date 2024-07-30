@@ -6,9 +6,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {
     public override Task<AuthenticationState> GetAuthenticationStateAsync()
     {
-        // Here you would typically check if the user is authenticated.
-        // For example, you might check a token stored in local storage.
-        var user = new ClaimsPrincipal(new ClaimsIdentity()); // Replace with actual user logic
+        var user = new ClaimsPrincipal(new ClaimsIdentity());
         return Task.FromResult(new AuthenticationState(user));
     }
 
